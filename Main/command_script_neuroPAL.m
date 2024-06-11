@@ -1,66 +1,57 @@
-% command script to run neuron ID. 
-% Check the following variables are set correctly before running
-% datadriven atlas: whichatlas
-% groundtruth labels: markernamesfile
+% command script to reproduce results in Sprague et al.
 
-%checklist before running
-% check atlas name
-% check node potential mode 'col' for color incorporated
-
-clear
-clc
 addpath('Main')
 
 tableofaccuracy= zeros(1,5);
 
 csv_files_all= []; 
 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/worms_by_group/files_after_removal/0';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/color_corrected/0';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/worms_by_group/files_after_removal/1';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/color_corrected/1';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/worms_by_group/files_after_removal/2';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/color_corrected/2';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/worms_by_group/files_after_removal/3';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/color_corrected/3';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 
-folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/worms_by_group/files_after_removal/4';
+folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/color_corrected/4';
 csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 csv_files_all = [csv_files_all csv_files_dataset];
 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/wo_color_correction/0';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/wo_color_correction/0';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/wo_color_correction/1';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/wo_color_correction/1';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/wo_color_correction/2';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/wo_color_correction/2';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/wo_color_correction/3';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/wo_color_correction/3';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
 % 
-% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/aligned_worms_Kato/wo_color_correction/4';
+% folder_direc= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/Datasets/NeuroPAL_corpus/wo_color_correction/4';
 % csv_files_full = dir(fullfile(folder_direc,'*.csv'));
 % csv_files_dataset = {csv_files_full.folder; csv_files_full.name};
 % csv_files_all = [csv_files_all csv_files_dataset];
@@ -87,10 +78,9 @@ save([folder_direc erase(char(csv_files_all(2,j)),".csv")], 'mu_r', 'neuron_list
 howmanyruns=1; % specify the number of runs
 
 coord_data_dir=[folder_direc erase(char(csv_files_all(2,j)),".csv") ];
-CRF_result_dir=[folder_direc '/CRF_result_original_Lu_cc'];
+CRF_result_dir=[folder_direc '/CRF_result'];
 
 atlas_dir= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/utils/atlas_o0123.mat';
-%atlas_dir= '/Users/hyunjee/Dropbox (GaTech)/Whole-brain codes/CRF_Cell_ID-master/utils/data_neuron_relationship_annotation_updated.mat';
 
 
 for m= 1:howmanyruns
